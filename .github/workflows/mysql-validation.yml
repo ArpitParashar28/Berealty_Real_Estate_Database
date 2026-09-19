@@ -1,0 +1,41 @@
+name: MySQL 8.4 validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=12
+    env:
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show MySQL version
+        run: mysql -h127.0.0.1 -P3306 -uroot -proot -e "SELECT VERSION();"
+      - name: Build database
+        run: bash scripts/run.sh
+      - name: Run verification and query evidence
+        run: bash scripts/evidence.sh
+      - name: Upload text evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: berealty-mysql-evidence
+          path: outputs/*.txt
