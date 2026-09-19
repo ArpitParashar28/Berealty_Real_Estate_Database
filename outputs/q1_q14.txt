@@ -1,0 +1,171 @@
++-------------+----------------------------------------+---------------+-----------------+------------------+----------------+--------------+------------+----------------+
+| property_id | property_address                       | property_type | property_status | owner_name       | managing_agent | listing_type | list_price | listing_status |
++-------------+----------------------------------------+---------------+-----------------+------------------+----------------+--------------+------------+----------------+
+|           1 | 12 Prenzlauer Allee, Prenzlauer Berg   | Apartment     | Sold            | Leon Braun       | Anna Mueller   | NULL         |       NULL | NULL           |
+|           2 | 88 Sonnenallee, Neukoelln              | Apartment     | Rented          | Emma Weber       | Lukas Schmidt  | NULL         |       NULL | NULL           |
+|           3 | 24 Koenigsallee, Grunewald             | House         | Sold            | Hannah Krueger   | Sofia Becker   | NULL         |       NULL | NULL           |
+|           4 | 16 Friedrichstrasse, Mitte             | Office        | Rented          | Lea Koch         | David Klein    | NULL         |       NULL | NULL           |
+|           5 | 41 Boxhagener Strasse, Friedrichshain  | Apartment     | Sold            | Clara Zimmermann | Anna Mueller   | NULL         |       NULL | NULL           |
+|           6 | 7 Dahlemer Weg, Zehlendorf             | House         | Sold            | Elias Neumann    | David Klein    | NULL         |       NULL | NULL           |
+|           7 | 9 Kantstrasse, Charlottenburg          | Apartment     | Rented          | Mila Wolf        | Mia Wagner     | NULL         |       NULL | NULL           |
+|           8 | 33 Pankower Allee, Pankow              | House         | Reserved        | Emma Weber       | Lukas Schmidt  | Sale         |  735000.00 | Under Offer    |
+|           9 | 55 Karl-Marx-Allee, Friedrichshain     | Apartment     | Available       | Noah Hoffmann    | Sofia Becker   | Sale         |  405000.00 | Active         |
+|          10 | 18 Weserstrasse, Neukoelln             | Studio        | Reserved        | Lea Koch         | Mia Wagner     | Rent         |    2250.00 | Under Offer    |
+|          11 | 22 Stargarder Strasse, Prenzlauer Berg | Studio        | Rented          | Mila Wolf        | Lukas Schmidt  | NULL         |       NULL | NULL           |
+|          12 | 5 Tauentzienstrasse, Charlottenburg    | Retail        | Rented          | Lea Koch         | David Klein    | NULL         |       NULL | NULL           |
+|          13 | 62 Warschauer Strasse, Friedrichshain  | Apartment     | Available       | Jonas Fischer    | Anna Mueller   | Sale         |  415000.00 | Active         |
+|          14 | 3 Alexanderplatz, Mitte                | Office        | Available       | Paul Richter     | Sofia Becker   | Rent         |    5900.00 | Active         |
+|          15 | 11 Alt-Tegel, Tegel                    | House         | Available       | Noah Hoffmann    | Mia Wagner     | Sale         |  690000.00 | Active         |
++-------------+----------------------------------------+---------------+-----------------+------------------+----------------+--------------+------------+----------------+
++----------+---------------+--------------+---------------+--------------------+
+| agent_id | agent_name    | listing_type | open_listings | average_list_price |
++----------+---------------+--------------+---------------+--------------------+
+|        1 | Anna Mueller  | NULL         |             0 |               NULL |
+|        1 | Anna Mueller  | Sale         |             1 |          415000.00 |
+|        2 | Lukas Schmidt | NULL         |             0 |               NULL |
+|        2 | Lukas Schmidt | Sale         |             1 |          735000.00 |
+|        3 | David Klein   | NULL         |             0 |               NULL |
+|        4 | Sofia Becker  | NULL         |             0 |               NULL |
+|        4 | Sofia Becker  | Sale         |             1 |          405000.00 |
+|        4 | Sofia Becker  | Rent         |             1 |            5900.00 |
+|        5 | Mia Wagner    | NULL         |             0 |               NULL |
+|        5 | Mia Wagner    | Sale         |             1 |          690000.00 |
+|        5 | Mia Wagner    | Rent         |             1 |            2250.00 |
++----------+---------------+--------------+---------------+--------------------+
++----------------+---------------+--------------+-----------------------+-----------------+------------------+---------------+
+| transaction_id | agent_name    | listing_type | address_line          | district        | transaction_date | agreed_amount |
++----------------+---------------+--------------+-----------------------+-----------------+------------------+---------------+
+|             11 | Lukas Schmidt | Rent         | 22 Stargarder Strasse | Prenzlauer Berg | 2025-11-10       |       1750.00 |
+|             12 | David Klein   | Rent         | 5 Tauentzienstrasse   | Charlottenburg  | 2025-12-15       |       4300.00 |
+|              1 | Anna Mueller  | Sale         | 12 Prenzlauer Allee   | Prenzlauer Berg | 2026-01-15       |     510000.00 |
+|              2 | Lukas Schmidt | Rent         | 88 Sonnenallee        | Neukoelln       | 2026-02-05       |       2050.00 |
+|              3 | Sofia Becker  | Sale         | 24 Koenigsallee       | Grunewald       | 2026-03-20       |     600000.00 |
+|              4 | David Klein   | Rent         | 16 Friedrichstrasse   | Mitte           | 2026-04-08       |       6500.00 |
+|              5 | Anna Mueller  | Sale         | 41 Boxhagener Strasse | Friedrichshain  | 2026-06-12       |     470000.00 |
+|              7 | Mia Wagner    | Rent         | 9 Kantstrasse         | Charlottenburg  | 2026-07-28       |       2850.00 |
+|              8 | David Klein   | Sale         | 7 Dahlemer Weg        | Zehlendorf      | 2026-08-22       |     545000.00 |
++----------------+---------------+--------------+-----------------------+-----------------+------------------+---------------+
++-----------+------------------+----------------+--------------+-----------------------+------------------+---------------+-----------+
+| client_id | client_name      | transaction_id | listing_type | address_line          | transaction_date | agreed_amount | status    |
++-----------+------------------+----------------+--------------+-----------------------+------------------+---------------+-----------+
+|         7 | Leon Braun       |              1 | Sale         | 12 Prenzlauer Allee   | 2026-01-15       |     510000.00 | Completed |
+|         7 | Leon Braun       |              7 | Rent         | 9 Kantstrasse         | 2026-07-28       |       2850.00 | Completed |
+|         7 | Leon Braun       |              6 | Sale         | 33 Pankower Allee     | 2026-09-01       |     720000.00 | Pending   |
+|         8 | Hannah Krueger   |             11 | Rent         | 22 Stargarder Strasse | 2025-11-10       |       1750.00 | Completed |
+|         8 | Hannah Krueger   |              2 | Rent         | 88 Sonnenallee        | 2026-02-05       |       2050.00 | Completed |
+|         8 | Hannah Krueger   |              3 | Sale         | 24 Koenigsallee       | 2026-03-20       |     600000.00 | Completed |
+|         9 | Elias Neumann    |             12 | Rent         | 5 Tauentzienstrasse   | 2025-12-15       |       4300.00 | Completed |
+|         9 | Elias Neumann    |              4 | Rent         | 16 Friedrichstrasse   | 2026-04-08       |       6500.00 | Completed |
+|         9 | Elias Neumann    |              8 | Sale         | 7 Dahlemer Weg        | 2026-08-22       |     545000.00 | Completed |
+|         9 | Elias Neumann    |             10 | Rent         | 18 Weserstrasse       | 2026-09-05       |       2200.00 | Pending   |
+|        10 | Clara Zimmermann |              5 | Sale         | 41 Boxhagener Strasse | 2026-06-12       |     470000.00 | Completed |
+|        10 | Clara Zimmermann |              9 | Sale         | 55 Karl-Marx-Allee    | 2026-07-01       |     390000.00 | Cancelled |
++-----------+------------------+----------------+--------------+-----------------------+------------------+---------------+-----------+
++----------+---------------+------------------+------------------------+-----------------+
+| agent_id | agent_name    | all_transactions | completed_transactions | completed_value |
++----------+---------------+------------------+------------------------+-----------------+
+|        1 | Anna Mueller  |                2 |                      2 |       980000.00 |
+|        2 | Lukas Schmidt |                3 |                      2 |         3800.00 |
+|        3 | David Klein   |                3 |                      3 |       555800.00 |
+|        4 | Sofia Becker  |                2 |                      1 |       600000.00 |
+|        5 | Mia Wagner    |                2 |                      1 |         2850.00 |
++----------+---------------+------------------+------------------------+-----------------+
++----------+---------------+---------------+--------------------+
+| agent_id | agent_name    | property_type | managed_properties |
++----------+---------------+---------------+--------------------+
+|        1 | Anna Mueller  | Apartment     |                  3 |
+|        1 | Anna Mueller  | House         |                  0 |
+|        1 | Anna Mueller  | Office        |                  0 |
+|        1 | Anna Mueller  | Retail        |                  0 |
+|        1 | Anna Mueller  | Studio        |                  0 |
+|        2 | Lukas Schmidt | Apartment     |                  1 |
+|        2 | Lukas Schmidt | House         |                  1 |
+|        2 | Lukas Schmidt | Office        |                  0 |
+|        2 | Lukas Schmidt | Retail        |                  0 |
+|        2 | Lukas Schmidt | Studio        |                  1 |
+|        3 | David Klein   | Apartment     |                  0 |
+|        3 | David Klein   | House         |                  1 |
+|        3 | David Klein   | Office        |                  1 |
+|        3 | David Klein   | Retail        |                  1 |
+|        3 | David Klein   | Studio        |                  0 |
+|        4 | Sofia Becker  | Apartment     |                  1 |
+|        4 | Sofia Becker  | House         |                  1 |
+|        4 | Sofia Becker  | Office        |                  1 |
+|        4 | Sofia Becker  | Retail        |                  0 |
+|        4 | Sofia Becker  | Studio        |                  0 |
+|        5 | Mia Wagner    | Apartment     |                  1 |
+|        5 | Mia Wagner    | House         |                  1 |
+|        5 | Mia Wagner    | Office        |                  0 |
+|        5 | Mia Wagner    | Retail        |                  0 |
+|        5 | Mia Wagner    | Studio        |                  1 |
++----------+---------------+---------------+--------------------+
++------------+----------------+--------------+------------+
+| listing_id | district       | listing_type | list_price |
++------------+----------------+--------------+------------+
+|         13 | Friedrichshain | Sale         |  415000.00 |
++------------+----------------+--------------+------------+
++-----------+----------------+------------------------+
+| client_id | client_name    | completed_transactions |
++-----------+----------------+------------------------+
+|         8 | Hannah Krueger |                      3 |
+|         9 | Elias Neumann  |                      3 |
++-----------+----------------+------------------------+
++--------------+--------------+-----------------+--------------+----------------+
+| report_month | listing_type | completed_count | total_amount | average_amount |
++--------------+--------------+-----------------+--------------+----------------+
+| 2025-11      | Rent         |               1 |      1750.00 |        1750.00 |
+| 2025-12      | Rent         |               1 |      4300.00 |        4300.00 |
+| 2026-01      | Sale         |               1 |    510000.00 |      510000.00 |
+| 2026-02      | Rent         |               1 |      2050.00 |        2050.00 |
+| 2026-03      | Sale         |               1 |    600000.00 |      600000.00 |
+| 2026-04      | Rent         |               1 |      6500.00 |        6500.00 |
+| 2026-06      | Sale         |               1 |    470000.00 |      470000.00 |
+| 2026-07      | Rent         |               1 |      2850.00 |        2850.00 |
+| 2026-08      | Sale         |               1 |    545000.00 |      545000.00 |
++--------------+--------------+-----------------+--------------+----------------+
++-------------+----------------+--------------+-----------------+--------------+
+| report_year | report_quarter | listing_type | completed_count | total_amount |
++-------------+----------------+--------------+-----------------+--------------+
+|        2025 |              4 | Rent         |               2 |      6050.00 |
+|        2026 |              1 | Sale         |               2 |   1110000.00 |
+|        2026 |              1 | Rent         |               1 |      2050.00 |
+|        2026 |              2 | Sale         |               1 |    470000.00 |
+|        2026 |              2 | Rent         |               1 |      6500.00 |
+|        2026 |              3 | Sale         |               1 |    545000.00 |
+|        2026 |              3 | Rent         |               1 |      2850.00 |
++-------------+----------------+--------------+-----------------+--------------+
++-------------+---------------+--------------+-----------------+--------------+
+| report_year | property_type | listing_type | completed_count | total_amount |
++-------------+---------------+--------------+-----------------+--------------+
+|        2025 | Retail        | Rent         |               1 |      4300.00 |
+|        2025 | Studio        | Rent         |               1 |      1750.00 |
+|        2026 | Apartment     | Sale         |               2 |    980000.00 |
+|        2026 | Apartment     | Rent         |               2 |      4900.00 |
+|        2026 | House         | Sale         |               2 |   1145000.00 |
+|        2026 | Office        | Rent         |               1 |      6500.00 |
++-------------+---------------+--------------+-----------------+--------------+
++----------+--------------+-----------------+------------------+------------+
+| agent_id | agent_name   | completed_sales | total_sale_value | sales_rank |
++----------+--------------+-----------------+------------------+------------+
+|        1 | Anna Mueller |               2 |        980000.00 |          1 |
+|        4 | Sofia Becker |               1 |        600000.00 |          2 |
+|        3 | David Klein  |               1 |        545000.00 |          3 |
++----------+--------------+-----------------+------------------+------------+
++------------------+----------------+--------------+---------------+--------------------+
+| transaction_date | transaction_id | agent_name   | agreed_amount | running_sale_total |
++------------------+----------------+--------------+---------------+--------------------+
+| 2026-01-15       |              1 | Anna Mueller |     510000.00 |          510000.00 |
+| 2026-03-20       |              3 | Sofia Becker |     600000.00 |         1110000.00 |
+| 2026-06-12       |              5 | Anna Mueller |     470000.00 |         1580000.00 |
+| 2026-08-22       |              8 | David Klein  |     545000.00 |         2125000.00 |
++------------------+----------------+--------------+---------------+--------------------+
++------------+-------------+-----------------------+----------------+--------------+-------------+----------------+---------------+
+| listing_id | property_id | address_line          | district       | listing_type | status      | days_on_market | viewing_count |
++------------+-------------+-----------------------+----------------+--------------+-------------+----------------+---------------+
+|          9 |           9 | 55 Karl-Marx-Allee    | Friedrichshain | Sale         | Active      |            127 |             1 |
+|          8 |           8 | 33 Pankower Allee     | Pankow         | Sale         | Under Offer |            101 |             1 |
+|         10 |          10 | 18 Weserstrasse       | Neukoelln      | Rent         | Under Offer |             80 |             1 |
+|         13 |          13 | 62 Warschauer Strasse | Friedrichshain | Sale         | Active      |             61 |             1 |
+|         14 |          14 | 3 Alexanderplatz      | Mitte          | Rent         | Active      |             49 |             1 |
+|         15 |          15 | 11 Alt-Tegel          | Tegel          | Sale         | Active      |             35 |             1 |
++------------+-------------+-----------------------+----------------+--------------+-------------+----------------+---------------+
