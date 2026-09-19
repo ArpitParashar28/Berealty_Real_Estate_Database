@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Berealty: build database",
+      "type": "shell",
+      "command": "bash scripts/run.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "Berealty: verification checks",
+      "type": "shell",
+      "command": "bash scripts/verify.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "Berealty: generate evidence",
+      "type": "shell",
+      "command": "bash scripts/evidence.sh",
+      "problemMatcher": []
+    }
+  ]
+}
